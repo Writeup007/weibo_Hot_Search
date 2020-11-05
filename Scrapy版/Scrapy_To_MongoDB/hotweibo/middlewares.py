@@ -15,12 +15,27 @@ class HotweiboSpiderMiddleware(object):
 
     @classmethod
     def from_crawler(cls, crawler):
+        """
+        Create a new : class from a crawler.
+
+        Args:
+            cls: (todo): write your description
+            crawler: (todo): write your description
+        """
         # This method is used by Scrapy to create your spiders.
         s = cls()
         crawler.signals.connect(s.spider_opened, signal=signals.spider_opened)
         return s
 
     def process_spider_input(self, response, spider):
+        """
+        Processes a response.
+
+        Args:
+            self: (todo): write your description
+            response: (todo): write your description
+            spider: (todo): write your description
+        """
         # Called for each response that goes through the spider
         # middleware and into the spider.
 
@@ -28,6 +43,15 @@ class HotweiboSpiderMiddleware(object):
         return None
 
     def process_spider_output(self, response, result, spider):
+        """
+        Yield the response.
+
+        Args:
+            self: (todo): write your description
+            response: (todo): write your description
+            result: (todo): write your description
+            spider: (todo): write your description
+        """
         # Called with the results returned from the Spider, after
         # it has processed the response.
 
@@ -36,6 +60,15 @@ class HotweiboSpiderMiddleware(object):
             yield i
 
     def process_spider_exception(self, response, exception, spider):
+        """
+        : parameter response : param response
+
+        Args:
+            self: (todo): write your description
+            response: (todo): write your description
+            exception: (todo): write your description
+            spider: (todo): write your description
+        """
         # Called when a spider or process_spider_input() method
         # (from other spider middleware) raises an exception.
 
@@ -44,6 +77,14 @@ class HotweiboSpiderMiddleware(object):
         pass
 
     def process_start_requests(self, start_requests, spider):
+        """
+        Yield all requests.
+
+        Args:
+            self: (todo): write your description
+            start_requests: (todo): write your description
+            spider: (str): write your description
+        """
         # Called with the start requests of the spider, and works
         # similarly to the process_spider_output() method, except
         # that it doesn’t have a response associated.
@@ -53,6 +94,13 @@ class HotweiboSpiderMiddleware(object):
             yield r
 
     def spider_opened(self, spider):
+        """
+        Spider the spider.
+
+        Args:
+            self: (todo): write your description
+            spider: (todo): write your description
+        """
         spider.logger.info('Spider opened: %s' % spider.name)
 
 
@@ -63,12 +111,27 @@ class HotweiboDownloaderMiddleware(object):
 
     @classmethod
     def from_crawler(cls, crawler):
+        """
+        Create a new : class from a crawler.
+
+        Args:
+            cls: (todo): write your description
+            crawler: (todo): write your description
+        """
         # This method is used by Scrapy to create your spiders.
         s = cls()
         crawler.signals.connect(s.spider_opened, signal=signals.spider_opened)
         return s
 
     def process_request(self, request, spider):
+        """
+        Process the request.
+
+        Args:
+            self: (str): write your description
+            request: (todo): write your description
+            spider: (str): write your description
+        """
         # Called for each request that goes through the downloader
         # middleware.
 
@@ -81,6 +144,15 @@ class HotweiboDownloaderMiddleware(object):
         return None
 
     def process_response(self, request, response, spider):
+        """
+        Process the response.
+
+        Args:
+            self: (todo): write your description
+            request: (todo): write your description
+            response: (todo): write your description
+            spider: (str): write your description
+        """
         # Called with the response returned from the downloader.
 
         # Must either;
@@ -90,6 +162,15 @@ class HotweiboDownloaderMiddleware(object):
         return response
 
     def process_exception(self, request, exception, spider):
+        """
+        Handles the exception.
+
+        Args:
+            self: (todo): write your description
+            request: (todo): write your description
+            exception: (todo): write your description
+            spider: (todo): write your description
+        """
         # Called when a download handler or a process_request()
         # (from other downloader middleware) raises an exception.
 
@@ -100,4 +181,11 @@ class HotweiboDownloaderMiddleware(object):
         pass
 
     def spider_opened(self, spider):
+        """
+        Spider the spider.
+
+        Args:
+            self: (todo): write your description
+            spider: (todo): write your description
+        """
         spider.logger.info('Spider opened: %s' % spider.name)
